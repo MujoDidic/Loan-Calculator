@@ -55,30 +55,51 @@
 <main class="flex-shrink-0">
     <div class="container mt-4">
         <div class="row row-cols-1 row-cols-lg-2">
-            <div class="col col-lg-4 border-2 border-end">
+            <div class="col col-lg-12 border-2">
                 <h1 class="appName border-2 border-bottom">Loan Calculator</h1>
                 <h4 class="lead">
                     With this app user can see in live action how works Website that uses Javascript as frontend programming language.
                 </h4>
-                <h2 class="mt-5 border-2 border-bottom">Instructions:</h2>
-                <p class="pColor">Enter a start and end value into desiganted field than press "Run" button</p>
+                <h2 class="mt-5 mb-5 border-2 border-bottom">Instructions:</h2>
+                <p class="mb-lg-5">Enter a start and end value into desiganted field than press "Run" button</p>
             </div>
             <div class="col col-lg-8">
                 <div class="row">
-                    <div>
-                        <h5>
-                            Enter values
-                        </h5>
+                    <div d-flex justify-content-start>
                         <form class="row gy-2 gx-2">
-                            <div class="col">
-                                <input id="fizzValue" type="number" class="form-control" placeholder="Start value"
-                                 value="3" aria-label="Fizz value">
+                            <div class="col-12 col-lg-6 float-lg-start">   
+                                <h5>
+                                    Loan amount
+                                </h5>
+                                <div>
+                                    <input id="loanAmount" type="number" class="form-control" placeholder="Loan amount"
+                                    value="0" aria-label="Loan Amount">
+                                </div>
+                                <h5>
+                                    Months of payment
+                                </h5>
+                                <div>
+                                    <input id="monthsOfPayment" type="number" class="form-control" placeholder="Months of payment"
+                                    value="0" aria-label="Months of payment">
+                                </div>
+                                <h5>
+                                    Interest rate
+                                </h5>
+                                <div>
+                                    <input id="interestRate" type="number" class="form-control" placeholder="Interese rate" 
+                                    value="0" aria-label="Interest rate">
+                                </div>
                             </div>
-                            <div class="col">
-                                <input id="buzzValue" type="number" class="form-control" placeholder="End value" 
-                                 value="5" aria-label="Buzz value">
+                            <div  class="col-12 col-lg-6 float-lg-end alert alert-success fade show">    
+                                <h4  id="alertHeader" class="alert-heading">Loan amount</h4>
+                                <div id="alert" role="alert">
+                                    
+                                    <p class="mb-0" id="msg">
+                                        <!--Message/string from JS-->
+                                    </p>
+                                </div>
                             </div>
-                            <div class="col-12 d-flex justify-content-end">
+                            <div class="col-12">
                                 <button id="btnSubmit" type="button" class="btn btn-dark btn-lg">Run</button>
                             </div>
                         </form>
@@ -95,6 +116,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 </main>
