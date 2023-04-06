@@ -14,7 +14,7 @@ function getValues() {
     //Check are they integers
     if (Number.isInteger(loanAmount) && Number.isInteger(numberOfMonths) && Number.isInteger(interestOfLoan)) {
         
-        //call FizzBuzz
+        //call Array for Loan calculation
         let loanArray = loanPayment(loanAmount, numberOfMonths, interestOfLoan);
         
         
@@ -25,7 +25,7 @@ function getValues() {
     }
        
 }
-
+// Loan calculation
 function loanPayment(loanAmount, numberOfMonths, interestOfLoan){
 
     let returnLoanArray = [];
@@ -34,8 +34,6 @@ function loanPayment(loanAmount, numberOfMonths, interestOfLoan){
 
     let monthInterest = loanAmount * interest / 12; // monthly interest
 
-    
-//--------------------------------------------------------------
     let totalInterest = 0;
 
     let restOfLoan = loanAmount;
