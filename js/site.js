@@ -57,8 +57,6 @@ function loanPayment(loanAmount, numberOfMonths, interestOfLoan){
             monthRateWithInterest = restOfLoan;
             returnLoanArray.push(restOfLoan = restOfLoan - monthRateWithInterest);
         
-        
-        
     }
     
     return returnLoanArray;
