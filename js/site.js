@@ -1,7 +1,4 @@
-let loanAmount;
-let numberOfMonths;
-let interestOfLoan;
-
+// Loan calculator software
 function getValues() {
 
     // Get values from the page
@@ -21,19 +18,22 @@ function getValues() {
         let loanArray = loanPayment(loanAmount, numberOfMonths, interestOfLoan);
         
         
-        //Display data to a screen
+        //Display data in table to a screen
         displayData(loanArray);
 
         
     }else{
         alert("You must input number!!!");
     }
-
+    //Displays data on screen into h3 HTML tag
     DisplayOnBody(loanAmount);
        
 }
 
+// Made it global because it's used in functions loanPayment() and DisplayOnBody()
 var totalInterest;
+
+
 // Loan calculation
 
 function loanPayment(loanAmount, numberOfMonths, interestOfLoan){
@@ -49,10 +49,6 @@ function loanPayment(loanAmount, numberOfMonths, interestOfLoan){
     let pastMonths;
     
     totalInterest = 0;
-
-    
-    ///localStorage.setItem(totalInterest, `${totalInterest}`);
-
 
 
     for (pastMonths = 1; pastMonths <= numberOfMonths; pastMonths++) {
@@ -70,6 +66,8 @@ function loanPayment(loanAmount, numberOfMonths, interestOfLoan){
         if(monthRateWithInterest > restOfLoan)
             monthRateWithInterest = restOfLoan;
             returnLoanArray.push(restOfLoan = restOfLoan - monthRateWithInterest);
+
+             
         
     }
     
@@ -77,7 +75,7 @@ function loanPayment(loanAmount, numberOfMonths, interestOfLoan){
     
 }
 
-
+// shows data in table
 function displayData(loanArray){
     
     let tableBody = document.getElementById("results");
@@ -113,22 +111,15 @@ function displayData(loanArray){
 
         tableBody.appendChild(tableRow);
 
-        
     }
-
-    
-    
-
 }
 
-//shows whole amount on body  amountLoanedDisplay   totalInterestDisplay  totalAmountToPayDisplay
+//shows whole of loan with interest on body 
 
 function DisplayOnBody() {
     
-    
-     
-    document.getElementById("amountLoanedDisplay").innerHTML = loanAmount;
-    document.getElementById("totalInterestDisplay").innerHTML = totalInterest.toFixed(2);
+    document.getElementById("amountLoanedDisplay").innerHTML = parseFloat(loanAmount).toFixed(2);
+    document.getElementById("totalInterestDisplay").innerHTML = parseFloat(totalInterest).toFixed(2);
     document.getElementById("totalAmountToPayDisplay").innerHTML = parseFloat(loanAmount + totalInterest).toFixed(2);
     
 }
