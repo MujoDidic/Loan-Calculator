@@ -1,10 +1,13 @@
+let loanAmount;
+let numberOfMonths;
+let interestOfLoan;
 
 function getValues() {
 
     // Get values from the page
-    let loanAmount = document.getElementById("loanAmount").value;
-    let numberOfMonths = document.getElementById("numberOfMonths").value;
-    let interestOfLoan = document.getElementById("interestOfLoan").value
+    loanAmount = document.getElementById("loanAmount").value;
+    numberOfMonths = document.getElementById("numberOfMonths").value;
+    interestOfLoan = document.getElementById("interestOfLoan").value
 
 
     //Check are they numbers
@@ -20,12 +23,19 @@ function getValues() {
         
         //Display data to a screen
         displayData(loanArray);
+
+        
     }else{
         alert("You must input number!!!");
     }
+
+    DisplayOnBody(loanAmount);
        
 }
+
+var totalInterest;
 // Loan calculation
+
 function loanPayment(loanAmount, numberOfMonths, interestOfLoan){
 
     let returnLoanArray = [];
@@ -34,11 +44,15 @@ function loanPayment(loanAmount, numberOfMonths, interestOfLoan){
 
     let monthInterest = loanAmount * interest / 12; // monthly interest
 
-    let totalInterest = 0;
-
     let restOfLoan = loanAmount;
-
+    
     let pastMonths;
+    
+    totalInterest = 0;
+
+    
+    ///localStorage.setItem(totalInterest, `${totalInterest}`);
+
 
 
     for (pastMonths = 1; pastMonths <= numberOfMonths; pastMonths++) {
@@ -52,7 +66,7 @@ function loanPayment(loanAmount, numberOfMonths, interestOfLoan){
         returnLoanArray.push(monthRate);
         returnLoanArray.push(monthInterest = restOfLoan * interest / 12);
         returnLoanArray.push(totalInterest = totalInterest + monthInterest);
-        
+
         if(monthRateWithInterest > restOfLoan)
             monthRateWithInterest = restOfLoan;
             returnLoanArray.push(restOfLoan = restOfLoan - monthRateWithInterest);
@@ -60,7 +74,7 @@ function loanPayment(loanAmount, numberOfMonths, interestOfLoan){
     }
     
     return returnLoanArray;
-
+    
 }
 
 
@@ -98,8 +112,23 @@ function displayData(loanArray){
         rowCols[5].textContent = loanArray[index + 5].toFixed(2);
 
         tableBody.appendChild(tableRow);
+
+        
     }
 
+    
+    
 
 }
 
+//shows whole amount on body  amountLoanedDisplay   totalInterestDisplay  totalAmountToPayDisplay
+
+function DisplayOnBody() {
+    
+    
+     
+    document.getElementById("amountLoanedDisplay").innerHTML = loanAmount;
+    document.getElementById("totalInterestDisplay").innerHTML = totalInterest.toFixed(2);
+    document.getElementById("totalAmountToPayDisplay").innerHTML = parseFloat(loanAmount + totalInterest).toFixed(2);
+    
+}
